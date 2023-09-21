@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -13,7 +14,8 @@ export class ContentComponent implements OnInit {
   @Input() baseUrl: any = '';
 
   constructor(
-    private readonly movieService: MovieService
+    private readonly movieService: MovieService,
+    private readonly router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +38,10 @@ export class ContentComponent implements OnInit {
         this.baseUrl = resp.images.base_url;
       }
     );
+  }
+
+  onView(id: string): void {
+    this.router.navigateByUrl(`/detail/${id}`);
   }
 
 }

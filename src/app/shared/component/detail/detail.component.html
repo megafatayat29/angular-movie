@@ -1,0 +1,22 @@
+<div class="container mt-5 row">
+  <ng-container *ngIf="!loading; else isLoading">
+    <div class="col-5">
+      <img src="{{baseUrl}}w342{{movie.poster_path}}" alt="">
+    </div>
+    <div class="col-7">
+      <h2 class="featurette-heading">{{ movie.original_title }}</h2>
+      <h4>"{{ movie.tagline }}"</h4>
+      <p class="lead">{{ movie.overview }}</p>
+    </div>
+  </ng-container>
+  <ng-template #isLoading>
+    <div class="container p-5">
+      <li class="list-group-item">
+        <span class="d-flex align-items-center">
+          <strong>Loading....</strong>
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </span>
+      </li>
+    </div>
+  </ng-template>
+</div>

@@ -43,4 +43,18 @@ export class MovieService {
       .then(response => response.json())
       .catch(err => console.error(err));
   }
+
+  public getById(movieId: string): Promise<any> {
+    const options = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOWU2NjM1OTViZjljZWFkY2NlMzc3YWRlYmFlNGEwYSIsInN1YiI6IjY1MGFhOGJkMGQ1ZDg1MDBhYTNkZjNmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6Q9iq1JMZtlPAjrzzkOycBnPtKIxCtblEZJEBjJrMzs'
+      }
+    };
+    
+    return fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, options)
+      .then(response => response.json())
+      .catch(err => console.error(err));
+  }
 }
