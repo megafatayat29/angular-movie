@@ -1,7 +1,5 @@
 <div class="card-container">
   <div *ngFor="let movie of movies" class="card" (click)="onView(movie.id)">
     <img src="{{baseUrl}}w154{{movie.poster_path}}" alt=""><br>
-    <!-- <p>{{ movie.original_title }}</p> -->
-    <!-- <i class="fa-regular fa-heart"></i> -->
   </div>
 </div>

@@ -3,10 +3,11 @@
     <div class="col-5">
       <img src="{{baseUrl}}w342{{movie.poster_path}}" alt="">
     </div>
-    <div class="col-7">
+    <div class="col-7" style="width: fixed;">
       <h2 class="featurette-heading">{{ movie.original_title }}</h2>
       <h4>"{{ movie.tagline }}"</h4>
       <p class="lead">{{ movie.overview }}</p>
+      <button type="button" class="btn btn-primary" (click)="onClickFav(movie.id)">Mark as favorite <i class="fa-regular fa-heart"></i></button>
     </div>
   </ng-container>
   <ng-template #isLoading>

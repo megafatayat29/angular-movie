@@ -56,4 +56,13 @@ export class DetailComponent implements OnInit{
       }
     );
   }
+
+  onClickFav(movieId: string): void {
+    this.movieService.markAsFav(movieId).then(
+      (resp) => {
+        // this.baseUrl = resp.images.base_url;
+        console.log(resp);
+      }
+    );
+  }
 }
