@@ -1,4 +1,4 @@
-<div class="card-container">
+<div class="card-container overflow-auto mh-100">
   <div *ngFor="let movie of movies" class="card" (click)="onView(movie.id)">
     <img src="{{baseUrl}}w154{{movie.poster_path}}" alt=""><br>
     <!-- <p>{{ movie.original_title }}</p> -->

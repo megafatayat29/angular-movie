@@ -7,7 +7,10 @@
       <h2 class="featurette-heading">{{ movie.original_title }}</h2>
       <h4>"{{ movie.tagline }}"</h4>
       <p class="lead">{{ movie.overview }}</p>
-      <button type="button" class="btn btn-primary" (click)="onClickFav(movie.id)">Mark as favorite <i class="fa-regular fa-heart"></i></button>
+        <button type="button" class="btn btn-primary" (click)="onClickFav(movie.id)">
+          <ng-container *ngIf="!isFav"> Mark as favorite <i class="fa-regular fa-heart"></i></ng-container>
+          <ng-container *ngIf="isFav"> Remove favorite <i class="fa-solid fa-heart"></i></ng-container>
+        </button>
     </div>
   </ng-container>
   <ng-template #isLoading>

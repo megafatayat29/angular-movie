@@ -11,6 +11,7 @@ import { map } from 'rxjs';
 })
 export class DetailComponent implements OnInit{
 
+  isFav: boolean = false;
   movieId: string | undefined;
   @Input() movie!: Movie;
   @Input() baseUrl: any = '';
@@ -36,9 +37,9 @@ export class DetailComponent implements OnInit{
             this.movieId = movieId;
             this.movieService.getById(movieId).then(
               (resp) => {
+                this.getListFav();
                 this.movie = resp;
-                console.log(this.movie);
-                this.loading = false
+                this.loading = false;
               }
             );
           }
@@ -58,11 +59,20 @@ export class DetailComponent implements OnInit{
   }
 
   onClickFav(movieId: string): void {
-    this.movieService.markAsFav(movieId).then(
+    this.movieService.markAsFav(movieId,!this.isFav).then(
       (resp) => {
         // this.baseUrl = resp.images.base_url;
         console.log(resp);
+        this.isFav = !this.isFav;
       }
     );
+  }
+
+  getListFav(): void {
+    this.movieService.getFavMovie().then(
+      (resp) => {
+        this.isFav = !!resp.results.find((m: any) => m.id === Number(this.movieId));
+      }
+    )
   }
 }

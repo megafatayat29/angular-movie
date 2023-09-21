@@ -72,7 +72,7 @@ export class MovieService {
       .catch(err => console.error(err));
   }
 
-  public markAsFav(movieId: string): Promise<any> {
+  public markAsFav(movieId: string, isFav: boolean): Promise<any> {
     const options = {
       method: 'POST',
       headers: {
@@ -80,7 +80,7 @@ export class MovieService {
         'content-type': 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzOWU2NjM1OTViZjljZWFkY2NlMzc3YWRlYmFlNGEwYSIsInN1YiI6IjY1MGFhOGJkMGQ1ZDg1MDBhYTNkZjNmOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6Q9iq1JMZtlPAjrzzkOycBnPtKIxCtblEZJEBjJrMzs'
       },
-      body: JSON.stringify({media_type: 'movie', media_id: movieId, favorite: true})
+      body: JSON.stringify({media_type: 'movie', media_id: movieId, favorite: isFav})
     };
     
     return fetch('https://api.themoviedb.org/3/account/20466229/favorite', options)
